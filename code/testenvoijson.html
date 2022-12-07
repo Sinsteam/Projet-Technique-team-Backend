@@ -5,27 +5,51 @@
     <title>Test envoi Json</title>
 </head>
 <body>
-<form action="recupJson.php" method="post">
+<form action="ajoutUtilisateur.php" method="post">
     <div>
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="user_name">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom">
+    </div>
+    <div>
+        <label for="prenom">Prenom :</label>
+        <input type="text" id="prenom" name="prenom">
     </div>
     <div>
         <label for="mail">e-mail&nbsp;:</label>
-        <input type="email" id="mail" name="user_mail">
+        <input type="email" id="mail" name="mail">
     </div>
     <div>
-        <label for="msg">Message :</label>
-        <textarea id="msg" name="user_message"></textarea>
+        <label for="type">Type :</label>
+        <input type="number" id="type" name="type">
+    </div>
+    <div>
+        <label for="profil">profil :</label>
+        <input type="number" id="profil" name="profil">
+    </div>
+    <div>
+        <label for="promo">Vous venez de quelle promo ?</label>
+        <select id="promo" name="promo">
+            <option value="Bachelor" selected>Bachelor</option>
+            <option value="ingenieur">ingénieur</option>
+            <option value="coucou">Coucou</option>
+            <option value="yeah">Yeah</option>
+        </select>
+    </div>
+    <div>
+        <label for="mdp">Mot de passe :</label>
+        <input type="password" id="mdp" name="motdepasse">
     </div>
     <button onclick="sendJSON()">Send JSON</button>
 </form>
 <script>
     function sendJSON(){
-
-        let result = document.querySelector('.result');
-        let name = document.querySelector('#name');
-        let email = document.querySelector('#email');
+        let nom = document.querySelector('#nom');
+        let mail = document.querySelector('#mail');
+        let prenom = document.querySelector('#prenom');
+        let type = document.querySelector('#type');
+        let profil = document.querySelector('#profil');
+        let promo = document.querySelector('#promo').value;
+        let mdp = document.querySelector('#mdp');
 
         // Creating a XHR object
         let xhr = new XMLHttpRequest();
@@ -37,19 +61,17 @@
         // Set the request header i.e. which type of content you are sending
         xhr.setRequestHeader("Content-Type", "application/json");
 
-        // Create a state change callback
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-
-                // Print received data from server
-                result.innerHTML = this.responseText;
-
-            }
-        };
-
         // Converting JSON data to string
-        var data = JSON.stringify({ "name": name.value, "email": email.value });
-
+        var data = {
+            "functionname": "ajoutUser",
+            "nom": nom.value,
+            "mail": mail.value,
+            "prenom": prenom.value,
+            "type": type.value,
+            "profil":profil.value,
+            "promo":promo.value,
+            "mdp":mdp.value
+        };
         // Sending data with the request
         xhr.send(data);
     }
