@@ -1,26 +1,24 @@
 <?php
-include "Classe/Utilisateur.Class.php";
+include_once "Classe/Utilisateur.Class.php";
 include_once "config.php";
 
 echo "Bonjour";
-$ajoutUtilisateur = new Utilisateur();
 
-$ajoutUtilisateur->getMail(filter_input(INPUT_POST, "mail"));
-echo "$ajoutUtilisateur";
+
+
+
 $fonction = filter_input(INPUT_POST,"functionname");
 echo "$fonction";
 function ajoutUser()
 {
+    $ajoutUtilisateur = new Utilisateur(filter_input(INPUT_POST, "mail"),
+        filter_input(INPUT_POST, "type"),
+        filter_input(INPUT_POST, "profil"),
+        filter_input(INPUT_POST, "nom"),
+        filter_input(INPUT_POST, "prenom"),
+        filter_input(INPUT_POST, "promo"),
+        filter_input(INPUT_POST, "motdepasse"));
     echo "coucou";
-    $id_email = filter_input(INPUT_POST, "mail");
-    $type = filter_input(INPUT_POST, "type");
-    $profil = filter_input(INPUT_POST, "profil");
-    $nom = filter_input(INPUT_POST, "nom");
-    $prenom = filter_input(INPUT_POST, "prenom");
-    $promotion = filter_input(INPUT_POST, "promo");
-    $password = filter_input(INPUT_POST, "motdepasse");
-
-    echo "$nom \n $prenom \n $id_email \n $type \n $profil \n $promotion \n $password";
 
 
     $pdo = new PDO("mysql:host=" . Config::SERVEUR . ";dbname=" . Config::BDD, Config::UTILISATEUR, Config::MOTDEPASSE);

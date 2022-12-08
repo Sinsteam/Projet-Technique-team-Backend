@@ -2,7 +2,7 @@
 
 class Utilisateur
 {
-    private $id_mail;
+    private $mail;
     private $type;
     private $profile;
     private $nom;
@@ -15,7 +15,7 @@ class Utilisateur
     //method
 
     /**
-     * @param $id_mail
+     * @param $mail
      * @param $type
      * @param $profile
      * @param $nom
@@ -23,9 +23,10 @@ class Utilisateur
      * @param $promotion
      * @param $pwd
      */
-    public function __construct($id_mail, $type, $profile, $nom, $prenom, $promotion, $pwd)
+
+    public function __construct($mail, $type, $profile, $nom, $prenom, $promotion, $pwd)
     {
-        $this->id_mail = $id_mail;
+        $this->mail = $mail;
         $this->type = $type;
         $this->profile= $profile;
         $this->nom = $nom;
@@ -34,19 +35,18 @@ class Utilisateur
         $this->pwd = $pwd;
     }
 
-
     /**
      * @return mixed
      */
-    public function getid_mail()
+    public function getMail()
     {
-        return $this->id_mail;
+        return $this->mail;
     }
 
     /**
      * @return mixed
      */
-    public function gettype()
+    public function getType()
     {
         return $this->type;
     }
@@ -54,7 +54,7 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getprofile()
+    public function getProfile()
     {
         return $this->profile;
     }
@@ -62,7 +62,7 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getnom()
+    public function getNom()
     {
         return $this->nom;
     }
@@ -70,7 +70,7 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getprenom()
+    public function getPrenom()
     {
         return $this->prenom;
     }
@@ -78,7 +78,7 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getpromotion()
+    public function getPromotion()
     {
         return $this->promotion;
     }
@@ -86,11 +86,9 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getpwd()
+    public function getPwd()
     {
         return $this->pwd;
     }
-
-
-
 }
+
