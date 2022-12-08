@@ -2,53 +2,67 @@
 
 class Utilisateur
 {
-    private $mail;
-    private $pwd;
+    private $id_mail;
+    private $type;
+    private $profile;
     private $nom;
     private $prenom;
-    private $id;
+    private $promotion;
+    private $pwd;
 
 
 
     //method
 
     /**
-     * @param $mail
-     * @param $pwd
+     * @param $id_mail
+     * @param $type
+     * @param $profile
      * @param $nom
      * @param $prenom
-     * @param $id
+     * @param $promotion
+     * @param $pwd
      */
-    public function __construct($mail, $pwd, $nom, $prenom, $id)
+    public function __construct($id_mail, $type, $profile, $nom, $prenom, $promotion, $pwd)
     {
-        $this->mail = $mail;
-        $this->pwd = $pwd;
+        $this->id_mail = $id_mail;
+        $this->type = $type;
+        $this->profile= $profile;
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->id = $id;
+        $this->promotion= $promotion;
+        $this->pwd = $pwd;
     }
 
 
     /**
      * @return mixed
      */
-    public function getMail()
+    public function getid_mail()
     {
-        return $this->mail;
+        return $this->id_mail;
     }
 
     /**
      * @return mixed
      */
-    public function getPwd()
+    public function gettype()
     {
-        return $this->pwd;
+        return $this->type;
     }
 
     /**
      * @return mixed
      */
-    public function getNom()
+    public function getprofile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getnom()
     {
         return $this->nom;
     }
@@ -56,7 +70,7 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getPrenom()
+    public function getprenom()
     {
         return $this->prenom;
     }
@@ -64,9 +78,17 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getId()
+    public function getpromotion()
     {
-        return $this->id;
+        return $this->promotion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getpwd()
+    {
+        return $this->pwd;
     }
 
 

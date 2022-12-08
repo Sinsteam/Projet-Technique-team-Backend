@@ -1,6 +1,12 @@
 <?php
+include "Classe/Utilisateur.Class.php";
+include_once "config.php";
 
 echo "Bonjour";
+$ajoutUtilisateur = new Utilisateur();
+
+$ajoutUtilisateur->getMail(filter_input(INPUT_POST, "mail"));
+echo "$ajoutUtilisateur";
 $fonction = filter_input(INPUT_POST,"functionname");
 echo "$fonction";
 function ajoutUser()
@@ -16,7 +22,7 @@ function ajoutUser()
 
     echo "$nom \n $prenom \n $id_email \n $type \n $profil \n $promotion \n $password";
 
-    include_once "config.php";
+
     $pdo = new PDO("mysql:host=" . Config::SERVEUR . ";dbname=" . Config::BDD, Config::UTILISATEUR, Config::MOTDEPASSE);
     $req = $pdo->prepare("insert into utilisateur (Id_email,type,profil,nom,prenom,promotion,password) values (:id_email,:type,:profil,:nom,:prenom,:promotion,:password)");
     $req->bindParam(":id_email", $id_email);
