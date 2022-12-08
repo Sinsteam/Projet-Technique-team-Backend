@@ -6,28 +6,29 @@ class Utilisateur
     private $pwd;
     private $nom;
     private $prenom;
-    private $id;
-
-
-
-    //method
+    private $type;
+    private $promotion;
+    private $profil;
 
     /**
      * @param $mail
      * @param $pwd
      * @param $nom
      * @param $prenom
-     * @param $id
+     * @param $type
+     * @param $promotion
+     * @param $profil
      */
-    public function __construct($mail, $pwd, $nom, $prenom, $id)
+    public function __construct($mail, $pwd, $nom, $prenom, $type, $promotion, $profil)
     {
         $this->mail = $mail;
         $this->pwd = $pwd;
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->id = $id;
+        $this->type = $type;
+        $this->promotion = $promotion;
+        $this->profil = $profil;
     }
-
 
     /**
      * @return mixed
@@ -64,11 +65,26 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getId()
+    public function getType()
     {
-        return $this->id;
+        return $this->type;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPromotion()
+    {
+        return $this->promotion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfil()
+    {
+        return $this->profil;
+    }
 
 
 }
