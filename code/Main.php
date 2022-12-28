@@ -1,8 +1,8 @@
 <?php
 include_once "Connexion.php";
 if(array_key_exists('submit1', $_POST)){
-    $user = new Utilisateur($_POST["mail"],$_POST["password"], null,null, null,);
-    echo($user->getMail() . " " . $user->getPwd());
+    $user = new Utilisateur($_POST["mail"],$_POST["password"], null,null, null,null, null);
+
     connect($user);
 }
 
