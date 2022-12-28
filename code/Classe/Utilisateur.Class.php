@@ -10,10 +10,7 @@ class Utilisateur
     private $promotion;
     private $pwd;
 
-
-
     //method
-
     /**
      * @param $mail
      * @param $type
