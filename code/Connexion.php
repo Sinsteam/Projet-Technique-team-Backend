@@ -39,11 +39,12 @@ function checkuserifexist(Utilisateur $user)
 {
     $UserMail = $user->getMail();
     $pdo = new PDO("mysql:host=" . Config::SERVEUR . ";dbname=" . Config::BDD, Config::UTILISATEUR, Config::MOTDEPASSE);
-    $stmt = $pdo->prepare("SELECT id FROM utilisateur WHERE Id_email= :mail");
-    $stmt->bindParam('mail', $UserMail, PDO::PARAM_STR);
+    $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE Id_email= :mail");
+    $stmt->bindParam(':mail', $UserMail, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetch();
     if ($result) {
+        header("location: demandeImpressionPage.php");
         return true;
     } else {
         return false;
@@ -63,12 +64,15 @@ function checkpwd(Utilisateur $user){
     $UserMail = $user->getMail();
     $pdo = new PDO("mysql:host=".Config::SERVEUR.";dbname=".Config::BDD, Config::UTILISATEUR, Config::MOTDEPASSE);
     $stmt = $pdo->prepare("SELECT password FROM utilisateur WHERE Id_email= :mail");
-    $stmt->bindParam('mail', $UserMail, PDO::PARAM_STR);
+    $stmt->bindParam(':mail', $UserMail, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetch();
-    if(password_verify($user->getPwd(), $result[0]))
+
+    if(password_verify($user->getPwd(), $result[0])){
         // If the password inputs matched the hashed password in the database
         return true;
-    else
+    }
+    else{
         return false;
+    }
 }

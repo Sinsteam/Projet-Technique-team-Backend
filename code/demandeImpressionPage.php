@@ -1,18 +1,19 @@
 <?php
-session_start();
 include_once "demandeImpression.php";
-
-//on récupère le fichier et on le met dans un dossier. ensuite on récupère le lien y accédant et on l'envoie avec les autres
-$nomDuFichier = filter_input(INPUT_POST,"localisation_fichier");
-$uploaddir = "../Fichiers/";
-$lien_fichier = $_FILES['localisation_fichier']['name'];
-echo "$lien_fichier";
-$uploadfile = $uploaddir . basename($lien_fichier);
-
-move_uploaded_file($_FILES['localisation_fichier']['tmp_name'], $uploadfile);
+foreach (glob("Classe/*.php") as $filename)
+{
+    include $filename;
+}
+session_start();
 
 if(array_key_exists('submit', $_POST)){
-    $impression = new Impression($lien_fichier,
+    //on récupère le fichier et on le met dans un dossier. ensuite on récupère le lien y accédant et on l'envoie avec les autres
+    $lien_fichier =$_FILES["fichier"]['name'];
+    $uploaddir = "Fichiers/";
+    $uploadfile = $uploaddir . basename($_FILES["fichier"]['name']);
+    move_uploaded_file($_FILES["fichier"]['tmp_name'], $uploaddir);
+
+    $impression = new Impression($_FILES["fichier"]['name'],
         filter_input(INPUT_POST, "description_impression"),
         filter_input(INPUT_POST, "date_debut"),
         filter_input(INPUT_POST, "date_fin"),
@@ -30,8 +31,8 @@ if(array_key_exists('submit', $_POST)){
 <body>
 <form method="post">
     <div>
-        <label for="localisation_fichier">Choisissez le fichier :</label>
-        <input type="file" id="localisation_fichier" name="localisation_fichier" accept="model/stl, model/obj">
+        <label for="fichier">Choisissez le fichier :</label>
+        <input type="file" id="fichier" name="fichier">
     </div>
     <div>
         <label for="description_impression">decrivez votre impression :</label>
