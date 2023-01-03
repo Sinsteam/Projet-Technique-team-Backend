@@ -10,6 +10,8 @@ function demande_impression(Impression $impression){
     $mail_user = $impression->getMailUser();
 
 
+
+
     $pdo = new PDO("mysql:host=" . Config::SERVEUR . ";dbname=" . Config::BDD, Config::UTILISATEUR, Config::MOTDEPASSE);
     $req = $pdo->prepare("insert into impression (localisation_fichier,description_inscription,date_debut,date_fin,date_souhaitee,mail_user) values (:localisation_fichier,:description_inscription,:date_debut,:date_fin,:date_souhaitee,:mail_user)");
     $req->bindParam(":localisation_fichier",$localisation_fichier );

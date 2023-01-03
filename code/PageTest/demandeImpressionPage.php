@@ -1,5 +1,5 @@
 <?php
-include_once "demandeImpression.php";
+include_once "../Action/demandeImpression.php";
 foreach (glob("Classe/*.php") as $filename)
 {
     include $filename;

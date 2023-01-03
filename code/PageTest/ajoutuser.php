@@ -1,5 +1,5 @@
 <?php
-include_once "ajoutUtilisateur.php";
+include_once "../Action/ajoutUtilisateur.php";
 if(array_key_exists('submit', $_POST)){
     $user = new Utilisateur(filter_input(INPUT_POST, "mail"), 0,0,
         filter_input(INPUT_POST, "nom"),
@@ -33,9 +33,9 @@ if(array_key_exists('submit', $_POST)){
         <label for="promo">Vous venez de quelle promo ?</label>
         <select id="promo" name="promo">
             <option value="Bachelor" selected>Bachelor</option>
-            <option value="ingenieur">ingénieur</option>
-            <option value="coucou">Coucou</option>
-            <option value="yeah">Yeah</option>
+            <option value="Cyber">Cyber</option>
+            <option value="GRE">GRE</option>
+            <option value="Prepa">Prepa</option>
         </select>
     </div>
     <div>

@@ -3,12 +3,12 @@
 class Impression
 {
 //    private $etat;
-    private $localisation_fichier;
-    private $description_impression;
-    private $date_debut;
-    private $date_fin;
-    private $date_souhaitee;
-    private $mail_user;
+    private $localisationFichier;
+    private $descriptionImpression;
+    private $dateDebut;
+    private $dateFin;
+    private $dateSouhaitee;
+    private $mailUser;
 
     //methode
     /**
@@ -24,12 +24,12 @@ class Impression
     public function __construct($localisation_fichier, $description_inscription, $date_debut, $date_fin, $date_souhaitee, $mail_user)
     {
 //        $this->etat = $etat;
-        $this->localisation_fichier= $localisation_fichier;
-        $this->description_impression= $description_inscription;
-        $this->date_debut= $date_debut;
-        $this->date_fin= $date_fin;
-        $this->date_souhaitee=$date_souhaitee;
-        $this->mail_user=$mail_user;
+        $this->localisationFichier= $localisation_fichier;
+        $this->descriptionImpression= $description_inscription;
+        $this->dateDebut= $date_debut;
+        $this->dateFin= $date_fin;
+        $this->dateSouhaitee=$date_souhaitee;
+        $this->mailUser=$mail_user;
     }
 
     /**
@@ -53,15 +53,15 @@ class Impression
      */
     public function getLocalisationFichier()
     {
-        return $this->localisation_fichier;
+        return $this->localisationFichier;
     }
 
     /**
-     * @param mixed $localisation_fichier
+     * @param mixed $localisationFichier
      */
-    public function setLocalisationFichier($localisation_fichier): void
+    public function setLocalisationFichier($localisationFichier): void
     {
-        $this->localisation_fichier = $localisation_fichier;
+        $this->localisationFichier = $localisationFichier;
     }
 
     /**
@@ -69,15 +69,15 @@ class Impression
      */
     public function getDescriptionImpression()
     {
-        return $this->description_impression;
+        return $this->descriptionImpression;
     }
 
     /**
-     * @param mixed $description_impression
+     * @param mixed $descriptionImpression
      */
-    public function setDescriptionImpression($description_impression): void
+    public function setDescriptionImpression($descriptionImpression): void
     {
-        $this->description_impression = $description_impression;
+        $this->descriptionImpression = $descriptionImpression;
     }
 
     /**
@@ -85,15 +85,15 @@ class Impression
      */
     public function getDateDebut()
     {
-        return $this->date_debut;
+        return $this->dateDebut;
     }
 
     /**
-     * @param mixed $date_debut
+     * @param mixed $dateDebut
      */
-    public function setDateDebut($date_debut): void
+    public function setDateDebut($dateDebut): void
     {
-        $this->date_debut = $date_debut;
+        $this->dateDebut = $dateDebut;
     }
 
     /**
@@ -101,15 +101,15 @@ class Impression
      */
     public function getDateFin()
     {
-        return $this->date_fin;
+        return $this->dateFin;
     }
 
     /**
-     * @param mixed $date_fin
+     * @param mixed $dateFin
      */
-    public function setDateFin($date_fin): void
+    public function setDateFin($dateFin): void
     {
-        $this->date_fin = $date_fin;
+        $this->dateFin = $dateFin;
     }
 
     /**
@@ -117,15 +117,15 @@ class Impression
      */
     public function getDateSouhaitee()
     {
-        return $this->date_souhaitee;
+        return $this->dateSouhaitee;
     }
 
     /**
-     * @param mixed $date_souhaitee
+     * @param mixed $dateSouhaitee
      */
-    public function setDateSouhaitee($date_souhaitee): void
+    public function setDateSouhaitee($dateSouhaitee): void
     {
-        $this->date_souhaitee = $date_souhaitee;
+        $this->dateSouhaitee = $dateSouhaitee;
     }
 
     /**
@@ -133,15 +133,15 @@ class Impression
      */
     public function getMailUser()
     {
-        return $this->mail_user;
+        return $this->mailUser;
     }
 
     /**
-     * @param mixed $mail_user
+     * @param mixed $mailUser
      */
-    public function setMailUser($mail_user): void
+    public function setMailUser($mailUser): void
     {
-        $this->mail_user = $mail_user;
+        $this->mailUser = $mailUser;
     }
 
 

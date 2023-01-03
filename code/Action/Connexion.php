@@ -1,7 +1,7 @@
 <?php
 
-require "Classe/Utilisateur.Class.php";
-include_once "config.php";
+require "../Classe/Utilisateur.Class.php";
+include_once "../config.php";
 
 
 function connect(utilisateur $user){
@@ -20,10 +20,20 @@ function connect(utilisateur $user){
     else{
         //verify if the password is good
         if(checkpwd($user)){
+
+            //adding users data to the users object
+            $UserMail = $user->getMail();
+            $pdo = new PDO("mysql:host=" . Config::SERVEUR . ";dbname=" . Config::BDD, Config::UTILISATEUR, Config::MOTDEPASSE);
+            $stmt = $pdo->prepare("SELECT * FROM utilisateur WHERE Id_email= :mail");
+            $stmt->bindParam(':mail', $UserMail, PDO::PARAM_STR);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+            $realUser = new User($result[0], $result[1], $result[2], $result[3], $result[4], $result[5], $result[6],);
             //creating the user session
             session_start();
-            $_SESSION["user"] = $user;
-            echo($user->getMail() . " " . $user->getPwd());
+            $_SESSION["user"] = $realUser;
             //TODO renvoyer vers la page d'accueil
         }
         else {
@@ -44,7 +54,6 @@ function checkuserifexist(Utilisateur $user)
     $stmt->execute();
     $result = $stmt->fetch();
     if ($result) {
-        header("location: demandeImpressionPage.php");
         return true;
     } else {
         return false;
