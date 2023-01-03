@@ -3,7 +3,7 @@
 class config
 {
     const SERVEUR = "localhost";
-    const BDD = "testbddesaip";
+    const BDD = "bddesaip";
     const UTILISATEUR = "root";
     const MOTDEPASSE = "";
 }

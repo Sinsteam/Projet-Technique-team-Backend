@@ -1,5 +1,5 @@
 <?php
-
+include_once "../config.php";
 function demande_impression(Impression $impression){
 //on mets les valeurs de l'objet récupéré dans des variables pour préparer l'envoi
     $localisation_fichier = $impression->getLocalisationFichier();
@@ -22,3 +22,4 @@ function demande_impression(Impression $impression){
     $req->bindParam(":mail_user", $mail_user);
     $req->execute();
 }
+

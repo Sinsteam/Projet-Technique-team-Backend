@@ -13,7 +13,6 @@ function connect(utilisateur $user){
             create_account($user);
         else{
             //case were the user's credential for the esaip AD are not correct
-            //TODO trouver un moyen de renvoyer un erreur
         }
     }
     //case were the user already exit in the database
@@ -34,10 +33,8 @@ function connect(utilisateur $user){
             //creating the user session
             session_start();
             $_SESSION["user"] = $realUser;
-            //TODO renvoyer vers la page d'accueil
         }
         else {
-            //TODO trouver un moyen de renvoyer une erreur
         }
     }
     //case were the user already exit in the database

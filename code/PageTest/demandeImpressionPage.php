@@ -1,9 +1,6 @@
 <?php
 include_once "../Action/demandeImpression.php";
-foreach (glob("Classe/*.php") as $filename)
-{
-    include $filename;
-}
+include_once "../Classe/Impression.Class.php";
 session_start();
 
 if(array_key_exists('submit', $_POST)){
@@ -22,14 +19,14 @@ if(array_key_exists('submit', $_POST)){
     demande_impression($impression);
 }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Test envoi Json</title>
 </head>
 <body>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div>
         <label for="fichier">Choisissez le fichier :</label>
         <input type="file" id="fichier" name="fichier">

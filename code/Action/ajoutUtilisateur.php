@@ -1,14 +1,9 @@
 <?php
-require "../Classe/Utilisateur.Class.php";
 include_once "../config.php";
 include_once "Connexion.php";
 function ajoutUtilisateur(Utilisateur $user)
 {
 //on mets les valeurs de l'objet récupéré dans des variables pour préparer l'envoi
-
-
-
-
 
     $mail = $user->getMail();
     $type = $user->getType();

@@ -32,7 +32,7 @@ function ExportWithParam(String $Table, Array $Param){
     $request = "SELECT * FROM " . $Table;
 
 }
-echo(ExportFullTable("utilisateur", [["profil", "1"],["nom", "guillaume"]]));
+
 
 
 
