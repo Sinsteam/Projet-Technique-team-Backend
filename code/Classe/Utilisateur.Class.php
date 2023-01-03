@@ -3,31 +3,34 @@
 class Utilisateur
 {
     private $mail;
-    private $pwd;
+    private $type;
+    private $profile;
     private $nom;
     private $prenom;
-    private $id;
-
-
+    private $promotion;
+    private $pwd;
 
     //method
-
     /**
      * @param $mail
-     * @param $pwd
+     * @param $type
+     * @param $profile
      * @param $nom
      * @param $prenom
-     * @param $id
+     * @param $promotion
+     * @param $pwd
      */
-    public function __construct($mail, $pwd, $nom, $prenom, $id)
+
+    public function __construct($mail, $type, $profile, $nom, $prenom, $promotion, $pwd)
     {
         $this->mail = $mail;
-        $this->pwd = $pwd;
+        $this->type = $type;
+        $this->profile= $profile;
         $this->nom = $nom;
         $this->prenom = $prenom;
-        $this->id = $id;
+        $this->promotion= $promotion;
+        $this->pwd = $pwd;
     }
-
 
     /**
      * @return mixed
@@ -40,9 +43,17 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getPwd()
+    public function getType()
     {
-        return $this->pwd;
+        return $this->type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfile()
+    {
+        return $this->profile;
     }
 
     /**
@@ -64,11 +75,20 @@ class Utilisateur
     /**
      * @return mixed
      */
-    public function getId()
+    public function getPromotion()
     {
-        return $this->id;
+        return $this->promotion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPwd()
+    {
+        return $this->pwd;
     }
 
 
 
 }
+
