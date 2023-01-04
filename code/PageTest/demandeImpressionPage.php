@@ -1,21 +1,23 @@
 <?php
 include_once "../Action/demandeImpression.php";
 include_once "../Classe/Impression.Class.php";
+include_once "../Classe/Utilisateur.Class.php";
+$usertest = new Utilisateur("gdudouet.bach2023@esaip.org", 1, 2, "dudouet", "guillaume", "Bachelor", "password");
 session_start();
-
+$_SESSION["user"] = $usertest;
 if(array_key_exists('submit', $_POST)){
+
     //on récupère le fichier et on le met dans un dossier. ensuite on récupère le lien y accédant et on l'envoie avec les autres
-    $lien_fichier =$_FILES["fichier"]['name'];
     $uploaddir = "Fichiers/";
-    $uploadfile = $uploaddir . basename($_FILES["fichier"]['name']);
-    move_uploaded_file($_FILES["fichier"]['tmp_name'], $uploaddir);
+    $uploadfile = "../../" . $uploaddir . basename($_FILES["fichier"]['name']);
+    move_uploaded_file($_FILES["fichier"]['tmp_name'], $uploadfile);
 
     $impression = new Impression($_FILES["fichier"]['name'],
         filter_input(INPUT_POST, "description_impression"),
         filter_input(INPUT_POST, "date_debut"),
         filter_input(INPUT_POST, "date_fin"),
         filter_input(INPUT_POST, "date_souhaitee"),
-        filter_input(INPUT_POST,$_SESSION["user"]));
+        $_SESSION["user"]->getMail());
     demande_impression($impression);
 }
 ?>
@@ -45,7 +47,7 @@ if(array_key_exists('submit', $_POST)){
     </div>
     <div>
         <label for="date_souhaitee">date souhaitee:</label>
-        <input type="date" id="date_debut" name="date_debut">
+        <input type="date" id="date_souhaitee" name="date_souhaitee">
     </div>
     <div>
         <input type="hidden" id="session">
